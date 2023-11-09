@@ -7,7 +7,7 @@ public class SwingControlDemo implements ActionListener {
     private JLabel statusLabel;
     private JPanel controlPanel;
     private JMenuBar mb;
-    private JMenu file, edit, help;
+    private JMenu file, edit, help, back;
     private JMenuItem cut, copy, paste, selectAll;
     private JTextArea ta; //typing area
     private int WIDTH=800;
@@ -42,6 +42,7 @@ public class SwingControlDemo implements ActionListener {
         file = new JMenu("File");
         edit = new JMenu("Edit");
         help = new JMenu("Help");
+        back = new JMenu ("Back");
         edit.add(cut);
         edit.add(copy);
         edit.add(paste);
@@ -49,6 +50,7 @@ public class SwingControlDemo implements ActionListener {
         mb.add(file);
         mb.add(edit);
         mb.add(help);
+        mb.add(back);
         //end menu at top
 
         ta = new JTextArea();
