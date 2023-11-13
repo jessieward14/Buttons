@@ -5,21 +5,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Easy2 implements ActionListener {
+
+    public class Medium1 implements ActionListener {
         private JFrame mainFrame;
+        private JLabel statusLabel;
 
-
-        private JMenu Button1;
-
+        private JLabel statusLabel2;
+        private JPanel controlPanel;
         private int WIDTH=800;
         private int HEIGHT=700;
 
 
-        public Easy2() {prepareGUI();
+        public Medium1() {
+            prepareGUI();
         }
 
         public static void main(String[] args) {
-            Easy2 swingControlDemo = new Easy2();
+           Medium1 swingControlDemo = new Medium1();
             swingControlDemo.showEventDemo();
         }
 
@@ -27,18 +29,16 @@ public class Easy2 implements ActionListener {
             mainFrame = new JFrame("Java SWING Examples");
             mainFrame.setSize(WIDTH, HEIGHT);
             mainFrame.setLayout(new BorderLayout());
-          //  mainFrame.add(Button1, BorderLayout.NORTH);
 
             //menu at top
 
 
 
 
-
-
-            //end menu at top
-
-
+            statusLabel = new JLabel("Label 1", JLabel.CENTER);
+            statusLabel.setSize(350, 100);
+            statusLabel2 = new JLabel("Label 2", JLabel.CENTER);
+            statusLabel2.setSize(350, 100);
 
 
             mainFrame.addWindowListener(new WindowAdapter() {
@@ -46,7 +46,12 @@ public class Easy2 implements ActionListener {
                     System.exit(0);
                 }
             });
+            controlPanel = new JPanel();
+            controlPanel.setLayout(new GridLayout(2,4)); //set the layout of the pannel
 
+
+           // mainFrame.add(statusLabel);
+            mainFrame.setVisible(true);
         }
 
         private void showEventDemo() {
@@ -63,19 +68,23 @@ public class Easy2 implements ActionListener {
             jessieButton.setActionCommand("Button 5");
             Button1.setActionCommand("Button 1");
 
-            okButton.addActionListener(new ButtonClickListener());
-            submitButton.addActionListener(new ButtonClickListener());
-            cancelButton.addActionListener(new ButtonClickListener());
-            jessieButton.addActionListener(new ButtonClickListener());
-            Button1.addActionListener(new ButtonClickListener());
+            okButton.addActionListener(new Medium1.ButtonClickListener());
+            submitButton.addActionListener(new Medium1.ButtonClickListener());
+            cancelButton.addActionListener(new Medium1.ButtonClickListener());
+            jessieButton.addActionListener(new Medium1.ButtonClickListener());
+            Button1.addActionListener(new Medium1.ButtonClickListener());
 
-            mainFrame.add(okButton,BorderLayout.EAST);
-            mainFrame.add(submitButton, BorderLayout.SOUTH);
-            mainFrame.add(cancelButton, BorderLayout.WEST);
-            mainFrame.add(jessieButton, BorderLayout.CENTER);
-            mainFrame.add(Button1, BorderLayout.NORTH);
 
+            mainFrame.add(submitButton,BorderLayout.SOUTH);
+            controlPanel.add(okButton);
+            controlPanel.add(statusLabel);
+            controlPanel.add(cancelButton);
+            controlPanel.add(statusLabel2);
+            controlPanel.add(jessieButton);
+            mainFrame.add(Button1,BorderLayout.NORTH);
+            mainFrame.add(controlPanel);
             mainFrame.setVisible(true);
+
         }
 
         @Override
@@ -94,16 +103,17 @@ public class Easy2 implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 String command = e.getActionCommand();
 
-              /*  if (command.equals("OK")) {
-                    statusLabel.setText("Ok Button clicked.");
-                } else if (command.equals("Submit")) {
-                    statusLabel.setText("Submit Button clicked.");
+                if (command.equals("Button 2")) {
+                    statusLabel.setText("Label 1");
+                } else if (command.equals("Button 4")) {
+                    statusLabel.setText("Label 2");
                 } else if(command.equals("Dance")){
                     statusLabel.setText("Jessie Button clicked.");
                 } else{
                     statusLabel.setText("Cancel Button clicked.");
-                }*/
+                }
             }
         }
+
 
     }
